@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Chat_Input from "./chat_input";
 import Bubble_Container from "./bubble_container";
 import axios from "axios";
 
@@ -8,6 +7,7 @@ const Chat_Container = () => {
 
 	const [userChatInput, setUserChatInput] = useState('');
 	const [userChats, setUserChats] = useState([]);
+	const [responseChats, setResponseChats] = useState([]);
 
 	const handleInputChange = (event) => {
 		setUserChatInput(event.target.value);
@@ -21,11 +21,13 @@ const Chat_Container = () => {
 		}
 
 		else{
+			setUserChats(([...userChats, userChatInput]));
 			axios.post(`http://127.0.0.1:8000/submit-chat`)
           .then(response => {
             // Update the state with the fetched data
+			setResponseChats(([...responseChats, response.data]));
 
-			setUserChats(([...userChats, [userChatInput,response.data]]));
+			//setUserChats(([...userChats, [userChatInput,response.data]]));
 			
           })
           .catch(error => {
@@ -48,7 +50,7 @@ const Chat_Container = () => {
 
 		<div className = 'bubble-container'>
 
-			<Bubble_Container userChats = {userChats}/>
+			<Bubble_Container userChats = {userChats} responseChats = {responseChats}/>
 
 		</div>
 		<div className = 'chat-input'><form onSubmit={handleSubmit}>

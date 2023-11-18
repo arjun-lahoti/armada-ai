@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
+import andy_propic from '../../../assets/andy-propic.png'; // Import the image
 
 
 
-const Bubble_Container = ({userChats}) => {
+const Bubble_Container = ({userChats, responseChats}) => {
 
 	const scrollableDivRef = useRef(null);
 	const scrollToBottom = () => {
@@ -25,7 +26,7 @@ const Bubble_Container = ({userChats}) => {
 	
 		// Call the function to scroll to the bottom after rendering
 		scrollToBottom();
-	  }, [userChats]);
+	  }, [userChats, responseChats]);
 
 
 	
@@ -36,9 +37,12 @@ const Bubble_Container = ({userChats}) => {
 			<div>
 
 			<h1 className="user-label">You</h1>
-			<div className = 'user-bubble' key={index}>{item[0]}</div><br/><br/>
-			<h1 className="user-label">Andy</h1>
-			<div className = 'response-bubble' key={index}>{item[1]}</div><br/><br/>
+			<div className = 'user-bubble' key={index}>{item}</div><br/><br/>
+
+			<div className = 'andy-response'>
+			<img className = 'andy-propic' src={andy_propic} alt="andy" /><h1 className="andy-label">Andy</h1>
+			</div>
+			<div className = 'response-bubble' key={index}>{responseChats[index]}</div><br/><br/>
 
 
 			</div>
