@@ -2,9 +2,10 @@ from openai import OpenAI
 import time
 import os
 import json
+from config import OPENAI_API_KEY
 
 client = OpenAI(
-    api_key='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',
+    api_key=OPENAI_API_KEY,
 )
 
 file = client.files.create(
@@ -12,24 +13,18 @@ file = client.files.create(
   purpose='assistants'
 )
 
-assistant = client.beta.assistants.retrieve("asst_EtXIIkftW4uif9ulMkQMf6U7")
+# assistant = client.beta.assistants.retrieve("asst_EtXIIkftW4uif9ulMkQMf6U7")
 
-# assistant = client.beta.assistants.create(
-#   name="Restaurant service technician assistant",
-#   description="You are a restaurant service technician assistant. You will search data present in .csv files and use your knowledge base to find specific parts that are relevant to the user. You will return a text summary of the part and its information. Please be precise.",
-#   model="gpt-3.5-turbo-1106", # gpt-4-1106-preview
-#   tools=[{"type": "retrieval"}],
-#   file_ids=[file.id]
-# )
+assistant = client.beta.assistants.create(
+  name="Restaurant service technician assistant",
+  description="You are a restaurant service technician assistant. You will search data present in .csv files and use your knowledge base to find specific parts that are relevant to the user. You will return a text summary of the part and its information. Please be precise.",
+  model="gpt-4-1106-preview",
+  tools=[{"type": "retrieval"}],
+  file_ids=[file.id]
+)
 
 thread = client.beta.threads.create(
-  messages=[
-    # {
-    #   "role": "user",
-    #   "content": "Give me the information for this product: 123456789",
-    #   "file_ids": [file.id]
-    # }
-  ]
+  messages=[]
 )
 
 #  Create a Thread
@@ -37,8 +32,7 @@ thread = client.beta.threads.create()
 
 # Add a Message to a Thread
 message = client.beta.threads.messages.create(thread_id=thread.id,role="user",
-    content="I am looking for a hose. What dimensions are available?",
-    file_ids=[file.id]
+    content="I am looking for a hose. What dimensions are available?"
 )
 
 # Run the Assistant
