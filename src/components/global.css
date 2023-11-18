@@ -60,8 +60,8 @@ overflow: hidden;
 
 
   position: absolute;
-  left: 10em;
-  right:10em;
+  left: 13em;
+  right:13em;
   top:0em;
   bottom:1em;
   margin-bottom:0;
@@ -78,7 +78,7 @@ overflow: hidden;
 
 .text-input{
   margin-left:3em;
-  width:50em;
+  width:45em;
   margin-right:1em;
   padding:1em;
   padding-right:4em;
@@ -149,7 +149,7 @@ overflow: hidden;
   background: rgb(92,36,245);
   background: linear-gradient(90deg, rgba(92,36,245,1) 0%, rgba(87,160,247,1) 100%);
   color:white;
-  width:45em;
+  width:40em;
   padding:5px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -176,11 +176,10 @@ overflow: hidden;
   animation: appearAnimation 0.3s forwards; /* Apply the animation */
   position:relative;
   left:.5em;
-  margin:1em;
   background: #f9faf7;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   color:black;
-  width:50em;
+  width:40em;
   padding:5px;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -243,10 +242,12 @@ overflow: hidden;
 
 
 .andy-propic{
-  height:1.2em;
-  width:1.2em;
-  margin-top:.7em;
+  position:relative;
+  top:.7em;
+  height:2.7em;
+  width:2.7em;
   margin-left:1.8em;
+  filter: grayscale(100%);
 }
 
 
@@ -259,7 +260,7 @@ overflow: hidden;
   text-align: center;
   color:white;
   position:relative;
-  bottom:.2em;
+
   background-color: #57a0f7;
   border-radius: 50%; /* Create a circle using border-radius */
 }

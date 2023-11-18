@@ -3,7 +3,7 @@ import andy_propic from '../../../assets/andy-propic.png'; // Import the image
 
 
 
-const Bubble_Container = ({userChats, responseChats}) => {
+const BubbleContainer = ({userChats, responseChats}) => {
 
 	const scrollableDivRef = useRef(null);
 	const scrollToBottom = () => {
@@ -43,10 +43,13 @@ const Bubble_Container = ({userChats, responseChats}) => {
 				<td><div className="profile-circle">Y</div></td></table>
 			<br/><br/>
 
-			<div className = 'andy-response'>
-			<img className = 'andy-propic' src={andy_propic} alt="andy" /><h1 className="andy-label">Andy</h1>
-			</div>
-			<div className = 'response-bubble' key={index}>{responseChats[index]}</div><br/><br/>
+			<h1 className="andy-label">Andy</h1>
+			<table className = 'gpt-response'><td>
+			<img className = 'andy-propic' src={andy_propic} alt="andy" /></td>
+				
+				<td><div className = 'response-bubble' key={index}>{responseChats[index]}</div></td></table>
+
+			<br/><br/>
 
 
 			</div>
@@ -60,4 +63,4 @@ const Bubble_Container = ({userChats, responseChats}) => {
 	);
 };
 
-export default Bubble_Container;
+export default BubbleContainer;

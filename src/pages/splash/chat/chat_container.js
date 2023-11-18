@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Bubble_Container from "./bubble_container";
+import BubbleContainer from "./bubble_container";
 import axios from "axios";
 
 
@@ -56,7 +56,7 @@ const Chat_Container = () => {
 
 		<div className = 'bubble-container'>
 
-			<Bubble_Container userChats = {userChats} responseChats = {responseChats}/>
+			<BubbleContainer userChats = {userChats} responseChats = {responseChats}/>
 
 		</div>
 		<div className = 'chat-input'><form onSubmit={handleSubmit}>
