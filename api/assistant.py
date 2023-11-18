@@ -2,6 +2,7 @@ from openai import OpenAI
 import time
 import os
 import json
+import re
 from config import OPENAI_API_KEY
 
 class Assistant:
@@ -53,6 +54,11 @@ class Assistant:
         )
 
         return message
+    
+    def remove_annotations(self, text):
+        pattern = re.compile(r'【.*?】')
+        cleaned_text = re.sub(pattern, '', text)
+        return cleaned_text
 
     def get_response(self, prompt):
         assistant = self.get_assistant(self.assistant_id)
@@ -65,8 +71,9 @@ class Assistant:
             time.sleep(10)
             if run_status.status == 'completed':
                 messages = self.client.beta.threads.messages.list(thread_id=thread.id)
-                print(messages.data[0].content[0].text.value)
-                return messages.data[0].content[0].text.value
+                cleaned_message = self.remove_annotations(messages.data[0].content[0].text.value)
+                print(cleaned_message)
+                return cleaned_message
                 break
             else:
                 time.sleep(2)
