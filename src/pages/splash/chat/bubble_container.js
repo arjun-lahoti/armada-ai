@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import andy_propic from '../../../assets/andy-propic.png'; // Import the image
 
 const BubbleContainer = ({userChats, responseChats}) => {
@@ -38,11 +39,29 @@ const BubbleContainer = ({userChats, responseChats}) => {
 				</table>
 				<br/><br/>
 
-				<h1 className="andy-label">Andy</h1>
+				<div>
+				{responseChats[index] && <div><h1 className="andy-label">Andy</h1>
 				<table className = 'gpt-response'>
 					<td><img className = 'andy-propic' src={andy_propic} alt="andy" /></td>
 					<td><div className = 'response-bubble' key={index}>{responseChats[index]}</div></td>
-				</table>
+				</table></div>}
+				</div>
+
+				<div>
+				{!responseChats[index] && <div className = 'typing'><TypeAnimation
+  sequence={[
+    // Same substring at the start will only be typed once, initially
+    'Andy is typing...',
+    1000,
+  ]}
+  speed={50}
+  style={{ fontSize: '2em' }}
+  repeat={Infinity}
+/></div>}
+				</div>
+
+
+				
 				<br/><br/>
 			</div>	  
         	))}
