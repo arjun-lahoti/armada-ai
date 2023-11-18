@@ -90,8 +90,6 @@ overflow: hidden;
   word-wrap: break-word;
   white-space: pre-wrap;
   background-color: #f9faf7;
-
-  
 }
 
 .submit-btn{
@@ -261,5 +259,9 @@ overflow: hidden;
 
   background-color: #57a0f7;
   border-radius: 50%;
+}
+
+.typing{
+  font-size: .5em;
 }
 

@@ -56,6 +56,14 @@ const Chat_Container = () => {
 		}	
 	};
 
+	const handleKeyPress = (event) => {
+		if (event.key === 'Enter' && !event.shiftKey) {
+		  event.preventDefault();
+		  handleSubmit(event);
+		}
+	}
+
+
 	return (
 
 		<div className = 'center-div'>
@@ -65,18 +73,20 @@ const Chat_Container = () => {
 
 				</div>
 					<div className = 'chat-input'>
-						<form onSubmit={handleSubmit}>
+						<form onSubmit={(e) => e.preventDefault()}>
 							<div
 								ref={inputRef}
 								className="text-input"
 								contentEditable="true"
 								onInput={handleInputChange}
+								onKeyPress={handleKeyPress}
 							></div>
-							<button className = 'submit-btn' type="submit">&uarr;</button>
+							<button className = 'submit-btn' type="submit" onClick={handleSubmit}>&uarr;</button>
 						</form>
 					</div>
     	
 	  		</div>
+			
 		</div>
 	);
 };
