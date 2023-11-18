@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import andy_propic from '../../../assets/andy-propic.png'; // Import the image
 
-
-
 const BubbleContainer = ({userChats, responseChats}) => {
 
+	// Reference to scroll container for auto scroll
 	const scrollableDivRef = useRef(null);
+
+	// Auto scroll to bottom of chat container to view most recent chat on submit
 	const scrollToBottom = () => {
 		if (scrollableDivRef.current) {
 		  const { scrollHeight, clientHeight } = scrollableDivRef.current;
@@ -19,12 +20,8 @@ const BubbleContainer = ({userChats, responseChats}) => {
 		}
 	  };
 
-
+	// Scroll to bottom when user or response chat is updated
 	useEffect(() => {
-		// Function to scroll the div to the bottom
-		
-	
-		// Call the function to scroll to the bottom after rendering
 		scrollToBottom();
 	  }, [userChats, responseChats]);
 
@@ -32,34 +29,24 @@ const BubbleContainer = ({userChats, responseChats}) => {
 	return (
 		<div ref={scrollableDivRef} className='bubble-container'>
 
-        {userChats.map((item, index) => (
+        	{userChats.map((item, index) => (
 			<div>
+				<h1 className="user-label">You</h1>
+				<table className = 'user-response'>
+					<td><div className = 'user-bubble' key={index}>{item}</div></td>
+					<td><div className="profile-circle">Y</div></td>
+				</table>
+				<br/><br/>
 
-			<h1 className="user-label">You</h1>
-
-			<table className = 'user-response'><td>
-				<div className = 'user-bubble' key={index}>{item}</div></td>
-				
-				<td><div className="profile-circle">Y</div></td></table>
-			<br/><br/>
-
-			<h1 className="andy-label">Andy</h1>
-			<table className = 'gpt-response'><td>
-			<img className = 'andy-propic' src={andy_propic} alt="andy" /></td>
-				
-				<td><div className = 'response-bubble' key={index}>{responseChats[index]}</div></td></table>
-
-			<br/><br/>
-
-
-			</div>
-          
-		  
-        ))}
-
-		
+				<h1 className="andy-label">Andy</h1>
+				<table className = 'gpt-response'>
+					<td><img className = 'andy-propic' src={andy_propic} alt="andy" /></td>
+					<td><div className = 'response-bubble' key={index}>{responseChats[index]}</div></td>
+				</table>
+				<br/><br/>
+			</div>	  
+        	))}
 		</div>
-
 	);
 };
 
