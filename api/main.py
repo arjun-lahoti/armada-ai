@@ -28,7 +28,7 @@ def submit_chat(data:StringData):
     # print("Response from Open AI is ", response)
     # return response
 
-    return data.data
+    return " Here is a link: (https://www.allpointsfps.com/32-1040-center-gasket-kit/)a%E3%80%9015%E2%80%A0source%E3%80%91."
 
 
 
