@@ -25,7 +25,7 @@ class Assistant:
         assistant = self.client.beta.assistants.create(
             name="Restaurant service technician assistant",
             description="You are a restaurant service technician assistant. You will search data present in .csv files and use your knowledge base to find specific parts that are relevant to the user. You will return a text summary of the part and its information. Please be precise.",
-            model="gpt-4-1106-preview",
+            model="gpt-3.5-turbo-1106",
             tools=[{"type": "retrieval"}],
             file_ids=[file.id]
         )

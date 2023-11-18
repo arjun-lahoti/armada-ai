@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Bubble_Container from "./bubble_container";
+import BubbleContainer from "./bubble_container";
 import axios from "axios";
 
 const Chat_Container = () => {
@@ -8,6 +8,14 @@ const Chat_Container = () => {
   const [responseChats, setResponseChats] = useState([]);
   const inputRef = useRef(null);
 
+  // Creating state variables
+
+  const [userChatInput, setUserChatInput] = useState("");
+  const [userChats, setUserChats] = useState([]);
+  const [responseChats, setResponseChats] = useState([]);
+  const inputRef = useRef(null);
+
+  // Update userChatInput when user types in input field
   const handleInputChange = (event) => {
     setUserChatInput(event.target.value);
     const inputElement = inputRef.current;
@@ -17,28 +25,35 @@ const Chat_Container = () => {
     }
   };
 
+  // Handle submit when user submits chat
   const handleSubmit = async (event) => {
+    // Prevent page reload
     event.preventDefault();
 
+    // Prevent submission if input field is empty
     if (userChatInput.trim() === "") {
       return false;
-    } else {
+    }
+
+    // If input field not empty...
+    else {
+      // Update userCharts prop passed to BubbleContainer child
       setUserChats([...userChats, userChatInput]);
 
+      // Call submit-chat api which processes user input and returns response
       axios
         .post("http://127.0.0.1:8000/submit-chat", { data: userChatInput })
         .then((response) => {
-          console.log(response.data);
-          // Update the state with the fetched data
+          // Update responseChats prop passed to BubbleContainer child
           setResponseChats([...responseChats, response.data]);
-
-          //setUserChats(([...userChats, [userChatInput,response.data]]));
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
 
+      // Set userChatInput to default
       setUserChatInput("");
+      inputRef.current.innerHTML = "";
     }
   };
 
@@ -46,7 +61,7 @@ const Chat_Container = () => {
     <div className="center-div">
       <div className="chat-container">
         <div className="bubble-container">
-          <Bubble_Container
+          <BubbleContainer
             userChats={userChats}
             responseChats={responseChats}
           />

@@ -1,13 +1,11 @@
 @font-face {
-  font-family: 'anurati'; /* Font name to use in CSS */
+  font-family: 'anurati'; 
   src: url('../components/Fonts/Anurati-Regular.otf') format('truetype');
-  /* You can include other formats here as well (e.g., woff, woff2) */
 }
 
 @font-face {
-  font-family: 'shree'; /* Font name to use in CSS */
+  font-family: 'shree';
   src: url('../components/Fonts/Shree-Devanagari-714.ttf') format('truetype');
-  /* You can include other formats here as well (e.g., woff, woff2) */
 }
 
 html,
@@ -30,7 +28,7 @@ overflow: hidden;
   height:6em;
   background: #6EB257;
   display: flex;
-  align-items: center; /* Vertically center */
+  align-items: center;
 }
 
 .center-div {
@@ -60,8 +58,8 @@ overflow: hidden;
 
 
   position: absolute;
-  left: 10em;
-  right:10em;
+  left: 13em;
+  right:13em;
   top:0em;
   bottom:1em;
   margin-bottom:0;
@@ -78,7 +76,7 @@ overflow: hidden;
 
 .text-input{
   margin-left:3em;
-  width:50em;
+  width:45em;
   margin-right:1em;
   padding:1em;
   padding-right:4em;
@@ -143,14 +141,14 @@ overflow: hidden;
 
 
 .user-bubble{
-  opacity: 0; /* Initially, set the element to be invisible */
-  animation: appearAnimation 0.3s forwards; /* Apply the animation */
+  opacity: 0;
+  animation: appearAnimation 0.3s forwards;
   margin:1em;
   background: rgb(92,36,245);
   background: linear-gradient(90deg, rgba(92,36,245,1) 0%, rgba(87,160,247,1) 100%);
   color:white;
-  width:45em;
-  padding:5px;
+  width:40em;
+  padding:8px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -172,15 +170,14 @@ overflow: hidden;
 
 
 .response-bubble{
-  opacity: 0; /* Initially, set the element to be invisible */
-  animation: appearAnimation 0.3s forwards; /* Apply the animation */
+  opacity: 0;
+  animation: appearAnimation 0.3s forwards;
   position:relative;
   left:.5em;
-  margin:1em;
   background: #f9faf7;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   color:black;
-  width:50em;
+  width:40em;
   padding:5px;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -243,10 +240,12 @@ overflow: hidden;
 
 
 .andy-propic{
-  height:1.2em;
-  width:1.2em;
-  margin-top:.7em;
+  position:relative;
+  top:.7em;
+  height:2.7em;
+  width:2.7em;
   margin-left:1.8em;
+  filter: grayscale(100%);
 }
 
 
@@ -259,8 +258,8 @@ overflow: hidden;
   text-align: center;
   color:white;
   position:relative;
-  bottom:.2em;
+
   background-color: #57a0f7;
-  border-radius: 50%; /* Create a circle using border-radius */
+  border-radius: 50%;
 }
 
