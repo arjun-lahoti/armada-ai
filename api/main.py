@@ -2,6 +2,8 @@ from fastapi import FastAPI, File, UploadFile, Body, Form, Depends, HTTPExceptio
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 
+from pydantic import BaseModel
+
 
 app = FastAPI()
 
@@ -10,11 +12,13 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+class StringData(BaseModel):
+    data: str
+
+
 @app.post("/submit-chat")
-def submit_chat():
-    return("gpt response")
-
-
+def submit_chat(data:StringData):
+    return(data.data)
 
 
 origins = ["http://localhost:3000"]

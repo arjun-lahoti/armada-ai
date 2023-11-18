@@ -21,7 +21,7 @@ Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 text-rendering: optimizeLegibility;
 color: #888;
 background: rgba(255, 255, 255, 0.825);
-background-color:black;
+background-color:#f9faf7;
 overflow: hidden;
 }
 
@@ -56,11 +56,9 @@ overflow: hidden;
 
 .chat-container{
  
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-bottom: 0px;
+  background: #f9faf7;
+
+
   position: absolute;
   left: 10em;
   right:10em;
@@ -74,24 +72,40 @@ overflow: hidden;
 
 .chat-input{
   position:absolute;
-  bottom:3em;
+  bottom:1.5em;
+  display: flex;
 }
 
 .text-input{
   margin-left:3em;
-  width:60em;
-  height:2.5em;
+  width:50em;
   margin-right:1em;
-  padding-left:1em;
+  padding:1em;
+  padding-right:4em;
   border-radius: 10px;
+  border:1px solid gray;
+  resize: 'none';
+  overflow-y: auto; 
+  overflow-x: hidden;
+  min-height: 2.8em;
+  max-height: 8.4em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #f9faf7;
+
+  
 }
 
 .submit-btn{
+  position:absolute;
+  bottom:.5em;
+  right:2em;
   height:2.7em;
   width:2.7em;
   border-radius: 10px;
   border:0px;
-  background-color: hsl(348, 46%, 45%);
+  background: rgb(87,160,247);
+  background: linear-gradient(90deg, rgba(87,160,247,1) 0%, rgba(36,44,245,1) 100%);
   color:white;
   transition: transform 0.3s 'cubic-bezier';
 }
@@ -104,12 +118,15 @@ overflow: hidden;
 
 .bubble-container{
   position:absolute;
+  display:flex;
+  flex-direction: column;
   top:2em;
   bottom:3em;
   right:1em;
   left:1em;
   overflow-y: scroll;
   scroll-behavior: 'smooth';
+  margin-bottom:2.4em;
 
 }
 
@@ -128,16 +145,25 @@ overflow: hidden;
 .user-bubble{
   opacity: 0; /* Initially, set the element to be invisible */
   animation: appearAnimation 0.3s forwards; /* Apply the animation */
-  display: inline-block;
-  position:relative;
-  left:3em;
-  background-color: #A93F55;
+  margin:1em;
+  background: rgb(92,36,245);
+  background: linear-gradient(90deg, rgba(92,36,245,1) 0%, rgba(87,160,247,1) 100%);
   color:white;
-  max-width:30em;
+  width:45em;
   padding:5px;
-  border-radius: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   padding-left:8px;
   padding-right:8px;
+  min-height:1em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.user-response{
+  position:relative;
+  left:3em;
 }
 
 .user-background span {
@@ -147,21 +173,23 @@ overflow: hidden;
 
 .response-bubble{
   opacity: 0; /* Initially, set the element to be invisible */
-  animation: appearAnimation 0.5s forwards; /* Apply the animation */
-  display: inline-block;
+  animation: appearAnimation 0.3s forwards; /* Apply the animation */
   position:relative;
-  left:3em;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color:white;
-  max-width:30em;
+  left:.5em;
+  margin:1em;
+  background: #f9faf7;
+  border: 1px solid black;
+  color:black;
+  width:50em;
   padding:5px;
-  border-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   padding-left:8px;
   padding-right:8px;
+  min-height:1em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .response-bubble span{
@@ -169,25 +197,28 @@ overflow: hidden;
 }
 
 .dynamic-br{
-  background: linear-gradient(90deg, rgba(250,3,3,1) 0%, rgba(249,255,0,1) 24%, rgba(78,192,67,1) 46%, rgba(8,51,143,1) 68%, rgba(225,36,245,1) 100%);
+  background: rgb(87,160,247);
+  background: linear-gradient(90deg, rgba(87,160,247,1) 0%, rgba(36,44,245,1) 100%);
   width:100%;
-  height:.3em;
+  height: 0.05em;
 }
 
 .andy-bubble{
   margin-top: .75rem;
   height: 1em;
-  left:4em;
+  left:3em;
   margin-left:1em;
   padding: 0.5em;
-  color: white;
+  color: black;
   font-weight: bold;
 
 }
 
 .user-label{
+  position:relative;
   font-size: 1em;
   margin-left:2em;
+  right:1em;
 }
 
 .andy-label{
@@ -219,4 +250,17 @@ overflow: hidden;
 }
 
 
+.profile-circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  color:white;
+  position:relative;
+  bottom:.2em;
+  background-color: #57a0f7;
+  border-radius: 50%; /* Create a circle using border-radius */
+}
 

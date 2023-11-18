@@ -28,7 +28,6 @@ const Bubble_Container = ({userChats, responseChats}) => {
 		scrollToBottom();
 	  }, [userChats, responseChats]);
 
-
 	
 	return (
 		<div ref={scrollableDivRef} className='bubble-container'>
@@ -37,7 +36,12 @@ const Bubble_Container = ({userChats, responseChats}) => {
 			<div>
 
 			<h1 className="user-label">You</h1>
-			<div className = 'user-bubble' key={index}>{item}</div><br/><br/>
+
+			<table className = 'user-response'><td>
+				<div className = 'user-bubble' key={index}>{item}</div></td>
+				
+				<td><div className="profile-circle">Y</div></td></table>
+			<br/><br/>
 
 			<div className = 'andy-response'>
 			<img className = 'andy-propic' src={andy_propic} alt="andy" /><h1 className="andy-label">Andy</h1>
