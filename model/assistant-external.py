@@ -4,7 +4,7 @@ import os
 import json
 
 client = OpenAI(
-    api_key='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',
+    api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
 file = client.files.create(
@@ -31,8 +31,7 @@ thread = client.beta.threads.create()
 
 # Add a Message to a Thread
 message = client.beta.threads.messages.create(thread_id=thread.id,role="user",
-    content="I am looking for a hose. What dimensions are available?",
-    file_ids=[file.id]
+    content="I am looking for a hose. What dimensions are available?"
 )
 
 # Run the Assistant
