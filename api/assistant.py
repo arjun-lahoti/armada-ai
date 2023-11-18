@@ -43,6 +43,10 @@ class Assistant:
 
         return thread
     
+    def get_thread(self, thread_id="thread_oW1rldBg21SHJktJ7i9wXL9Q"):
+        thread = self.client.beta.threads.retrieve(thread_id=thread_id)
+        return thread
+    
     def create_message(self, thread_id, role, content):
         message = self.client.beta.threads.messages.create(thread_id=thread_id,role=role,
             content=content
@@ -52,18 +56,15 @@ class Assistant:
 
     def get_response(self, prompt):
         assistant = self.get_assistant(self.assistant_id)
-        thread = self.create_thread()
+        thread = self.get_thread()
         message = self.create_message(thread.id, "user", prompt)
         run = self.client.beta.threads.runs.create(thread_id=thread.id,assistant_id=assistant.id)
         print(run.model_dump_json(indent=4))
         while True:
             run_status = self.client.beta.threads.runs.retrieve(thread_id=thread.id,run_id=run.id)
-            print(run_status.model_dump_json(indent=4))
             time.sleep(10)
             if run_status.status == 'completed':
                 messages = self.client.beta.threads.messages.list(thread_id=thread.id)
-                print(messages)
-                print(messages.model_dump_json(indent=4))
                 print(messages.data[0].content[0].text.value)
                 return messages.data[0].content[0].text.value
                 break
