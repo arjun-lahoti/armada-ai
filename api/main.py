@@ -4,8 +4,12 @@ from starlette.middleware.cors import CORSMiddleware
 
 from pydantic import BaseModel
 
+# Import Assistant class from assistant.py
+from assistant import Assistant
+
 
 app = FastAPI()
+# assistant = Assistant()
 
 
 @app.get("/")
@@ -18,7 +22,15 @@ class StringData(BaseModel):
 
 @app.post("/submit-chat")
 def submit_chat(data:StringData):
-    return(data.data)
+    # print("Data being received is ", data.data)
+    # response = assistant.get_response(data.data)
+
+    # print("Response from Open AI is ", response)
+    # return response
+
+    return data.data
+
+
 
 
 origins = ["http://localhost:3000"]
