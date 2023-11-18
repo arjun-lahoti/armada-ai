@@ -10,6 +10,12 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
+@app.post("/submit-chat")
+def submit_chat():
+    return("gpt response")
+
+
+
 
 origins = ["http://localhost:3000"]
 
