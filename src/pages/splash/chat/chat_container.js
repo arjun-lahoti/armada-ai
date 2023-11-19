@@ -1,15 +1,17 @@
 import React, { useState, useRef } from "react";
 import BubbleContainer from "./bubble_container";
 import axios from "axios";
+import ChatCards from "./chat_cards";
 
 
-const Chat_Container = () => {
+const ChatContainer = () => {
 
 	// Creating state variables
 
 	const [userChatInput, setUserChatInput] = useState('');
 	const [userChats, setUserChats] = useState([]);
 	const [responseChats, setResponseChats] = useState([]);
+	const [isEditable, setIsEditable] = useState("true");
 	const inputRef = useRef(null);
 
 	// Update userChatInput when user types in input field
@@ -27,6 +29,7 @@ const Chat_Container = () => {
 
 		// Prevent page reload
 		event.preventDefault();
+		setIsEditable("false");
 
 		// Prevent submission if input field is empty
 		if (userChatInput.trim() === "") {
@@ -44,6 +47,7 @@ const Chat_Container = () => {
 			.then(response => {
 				// Update responseChats prop passed to BubbleContainer child
 				setResponseChats(([...responseChats, response.data]));
+				setIsEditable("true");
 				
 			})
 			.catch(error => {
@@ -66,8 +70,14 @@ const Chat_Container = () => {
 
 	return (
 
+		<div>
+
 		<div className = 'center-div'>
+			
 			<div className = 'chat-container'>
+
+			{!userChats[0] && <ChatCards/>}
+				
 				<div className = 'bubble-container'>
 					<BubbleContainer userChats = {userChats} responseChats = {responseChats}/>
 
@@ -77,7 +87,7 @@ const Chat_Container = () => {
 							<div
 								ref={inputRef}
 								className="text-input"
-								contentEditable="true"
+								contentEditable={isEditable}
 								onInput={handleInputChange}
 								onKeyPress={handleKeyPress}
 							></div>
@@ -88,7 +98,8 @@ const Chat_Container = () => {
 	  		</div>
 			
 		</div>
+		</div>
 	);
 };
 
-export default Chat_Container;
+export default ChatContainer;

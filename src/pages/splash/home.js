@@ -1,6 +1,8 @@
 import React from "react";
-import Header from "./header"
-import Chat_Container from "./chat/chat_container";
+import ChatContainer from "./chat/chat_container";
+
+import Header from "./header";
+
 
 
 const Home = () => {
@@ -9,7 +11,8 @@ const Home = () => {
 		<div>
 			
 			<div className = 'dynamic-br'></div>
-			<Chat_Container/>
+			<Header/>
+			<ChatContainer/>
 	  </div>
 	);
 };
