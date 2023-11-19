@@ -7,7 +7,6 @@ from pydantic import BaseModel
 # Import Assistant class from assistant.py
 from assistant import Assistant
 
-
 app = FastAPI()
 assistant = Assistant()
 
