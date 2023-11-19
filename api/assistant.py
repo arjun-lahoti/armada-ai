@@ -6,7 +6,7 @@ import re
 # from config import OPENAI_API_KEY
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-print("OPENAI_API_KEY is ", OPENAI_API_KEY)
+print("OPENAI_API_KEY is: ", OPENAI_API_KEY)
 
 class Assistant:
     def __init__(self, assistant_id="asst_SC3TrqEO2Uufo5tw7st9sX4r"):
