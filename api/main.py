@@ -33,7 +33,7 @@ def submit_chat(data:StringData):
 
 
 
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:3000", "127.0.0.1:8000"]
 
 app = CORSMiddleware(
     app=app,
