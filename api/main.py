@@ -9,7 +9,7 @@ from assistant import Assistant
 
 
 app = FastAPI()
-# assistant = Assistant()
+assistant = Assistant()
 
 
 @app.get("/")
@@ -22,13 +22,13 @@ class StringData(BaseModel):
 
 @app.post("/submit-chat")
 def submit_chat(data:StringData):
-    # print("Data being received is ", data.data)
-    # response = assistant.get_response(data.data)
+    print("Data being received is ", data.data)
+    response = assistant.get_response(data.data)
 
-    # print("Response from Open AI is ", response)
-    # return response
+    print("Response from Open AI is ", response)
+    return response
 
-    return " Here is a link: (https://www.allpointsfps.com/32-1040-center-gasket-kit/)a%E3%80%9015%E2%80%A0source%E3%80%91."
+    # return " Here is a link: (https://www.allpointsfps.com/32-1040-center-gasket-kit/)a%E3%80%9015%E2%80%A0source%E3%80%91."
 
 
 
