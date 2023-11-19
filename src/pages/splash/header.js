@@ -1,30 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import img from '../../assets/logo2.png';
+import armada from "../../assets/armada-ai.png";
+import armada_txt from "../../assets/armada-txt.png";
+
 
 const Header = () => {
 	return (
-        <div className = 'homePageHeader'>
-        <table className>
-        <tbody>
-        <tr>
-          <td>
+        <div>
+          <div className="logo-container">
+          <img src={armada} alt = "Logo" className="armada-logo" />
+          </div>
 
-              <Link to="/">
-                  <img src={img} alt = "Logo" style = {{ width:50, height:50, marginLeft: 2 + 'vw', marginTop:0  + 'vh', float:'left'}} />
-              </Link>
-              
-          </td>
-          <td>
-          <div className = "logo-text">ARMADA AI</div>
-          </td>
-          
-
-        </tr>
-        </tbody>
-      </table>
-
-      </div>
+          <img className = "armada-text" src={armada_txt} alt = "Logo"/>
+        </div>
 	);
 };
 

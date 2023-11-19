@@ -37,7 +37,6 @@ const BubbleContainer = ({userChats, responseChats}) => {
 					<td><div className = 'user-bubble' key={index}>{item}</div></td>
 					<td><div className="profile-circle">Y</div></td>
 				</table>
-				<br/><br/>
 
 				<div>
 				{responseChats[index] && <div><h1 className="andy-label">Andy</h1>
@@ -48,23 +47,19 @@ const BubbleContainer = ({userChats, responseChats}) => {
 				</div>
 
 				<div>
-				{!responseChats[index] && <div className = 'typing'><TypeAnimation
-  sequence={[
-    // Same substring at the start will only be typed once, initially
-    'Andy is typing...',
-    1000,
-  ]}
-  speed={50}
-  style={{ fontSize: '2em' }}
-  repeat={Infinity}
-/></div>}
+					{!responseChats[index] && <div className = 'typing'><TypeAnimation
+						sequence={[
+							'Andy is typing...',
+							1000,
+						]}
+						speed={50}
+						style={{ fontSize: '2em' }}
+						repeat={Infinity}
+						/></div>}
 				</div>
-
-
-				
 				<br/><br/>
 			</div>	  
-        	))}
+			))}
 		</div>
 	);
 };
