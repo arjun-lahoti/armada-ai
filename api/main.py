@@ -32,7 +32,7 @@ def submit_chat(data:StringData):
 
 
 
-origins = ["http://localhost:3000", "127.0.0.1:8000"]
+origins = ["http://localhost:3000", "http://127.0.0.1:8000", "https://armada-ai-vkacker.vercel.app/"]
 
 app = CORSMiddleware(
     app=app,
