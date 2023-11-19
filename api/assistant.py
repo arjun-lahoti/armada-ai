@@ -5,7 +5,7 @@ import json
 import re
 # from config import OPENAI_API_KEY
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 print("OPENAI_API_KEY is: ", OPENAI_API_KEY)
 
 class Assistant:
