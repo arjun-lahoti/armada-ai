@@ -40,7 +40,9 @@ const ChatContainer = () => {
 
       // Call submit-chat api which processes user input and returns response
       axios
-        .post("/submit-chat", { data: userChatInput })
+        .post("https://armada-api.vercel.app/submit-chat", {
+          data: userChatInput,
+        })
         .then((response) => {
           // Update responseChats prop passed to BubbleContainer child
           setResponseChats([...responseChats, response.data]);
